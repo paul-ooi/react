@@ -17,13 +17,13 @@
 
         
         /*
-        NEST A REACT COMPONENT USING CreateElement API - CONVERT THE PREVIOUS BLOCK INTO JSX
+        MAKE NESTED JSX COMPONENT
         */
-        const message = props => <div>{props.msg}</div>; //CREATE A FUNCTION THAT ACCEPTS A PARAMETER
+        const Message = props => <div>{props.msg}</div>; //CONVERT THIS FUNCTION TO BE A COMPONENT RECOGNIZED AS JSX ELEMENT
         const element = (
             <div className="container">
-                { React.createElement( message, { msg: "Hello World" }) }
-                { React.createElement( message, { msg: "Goodbye World" }) }
+                <Message msg="Hello World" />
+                <Message msg="Goodbye World" />
             </div>
             );
        
