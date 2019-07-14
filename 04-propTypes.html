@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=div, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Strictly Typed</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+
+    <script type="text/babel">
+        const rootElement = document.getElementById('root');
+
+        /* ASSIGNING TYPE TO PROPS FROM SCRATCH */
+        function Greeting(props) {
+            return (
+                <div>
+                    Greetings {props.firstName} {props.lastName}!
+                </div>
+            );
+        }
+
+        /* CREATE A FUNCTION THAT WILL CHECK THE INCOMING VALUE TYPE*/
+        const PropTypes = {
+            string(props, propName, componentName) {
+
+                if (typeof props[propName] !== 'string') {
+                    // THROW AN ERROR TO PROVIDE FEEDBACK TO THE CONSOLE
+                    return new Error( 
+                        `You need to enter a string for ${propName} in ${componentName}, you've entered a ${typeof props[propName]}!`
+                    );
+                }
+            }
+        }
+
+        /* SINCE WE'RE CHECKING PROPTYPES MANUALLY, WE MUST TELL THE LASTNAME TO ALSO BE CHECKED BY OUR FUNCTION, OR IT WON'T APPEAR EVEN THOUGH IT IS A PROPERTY IN THE COMPONENT BUT NO VALUE PASSED TO THE COMPONENT */
+        Greeting.propTypes = {
+            firstName: PropTypes.string,
+            lastName: PropTypes.string,
+        }
+
+        /* SCENARIO: SOMEONE USES THE COMPONENT BUT PASSES A VALUE/TYPE THAT IS NOT THE INTENDED TYPE TO BE USED */
+        ReactDOM.render(
+            <Greeting firstName={true} />, 
+            rootElement
+        );
+        
+        </script>
+</body>
+</html>
