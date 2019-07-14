@@ -17,13 +17,14 @@
 
         
         /*
-        MAKE NESTED JSX COMPONENT
+        NEST THE COMPONENTS WITHIN EACH OTHER USING THE CHILDREN PROP
         */
-        const Message = props => <div>{props.msg}</div>; //CONVERT THIS FUNCTION TO BE A COMPONENT RECOGNIZED AS JSX ELEMENT
+        const Message = props => <div>{props.children}</div>; //CONVERT THIS FUNCTION TO BE A COMPONENT RECOGNIZED AS JSX ELEMENT
         const element = (
             <div className="container">
-                <Message msg="Hello World" />
-                <Message msg="Goodbye World" />
+                <Message>Hello World
+                    <Message>Goodbye World</Message>
+                </Message>
             </div>
             );
        
