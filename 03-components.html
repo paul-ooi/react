@@ -16,15 +16,16 @@
         const rootElement = document.getElementById('root');
 
         
-        /* 
-        EMBEDDING OTHER ELEMENTS IN THE JSX ELEMENT WILL RESULT IN CHILDREN THAT ARE ALSO JSX ELEMENTS 
+        /*
+        CREATE A FUNCTION THAT WILL ACCEPT A PARAMETER AND HANDLE AN OUTPUT
         */
+        const message = props => <div>{props.msg}</div>; //CREATE A FUNCTION THAT ACCEPTS A PARAMETER
         const element = (
             <div className="container">
-                <div>Hello World</div>
-                <div>Hello World</div>
-            </div>
-        )
+                { message( {msg: "Hello World"} ) }
+                { message( {msg: "Goodbye World"} ) }
+                </div>
+            ); // CALL THE FUNCTION AND PASS IN THE STRING FOR THE PARAMETER
        
         ReactDOM.render(element, rootElement);
     </script>
