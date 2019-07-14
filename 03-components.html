@@ -17,15 +17,15 @@
 
         
         /*
-        CREATE A FUNCTION THAT WILL ACCEPT A PARAMETER AND HANDLE AN OUTPUT
+        NEST A REACT COMPONENT USING CreateElement API - CONVERT THE PREVIOUS BLOCK INTO JSX
         */
         const message = props => <div>{props.msg}</div>; //CREATE A FUNCTION THAT ACCEPTS A PARAMETER
         const element = (
             <div className="container">
-                { message( {msg: "Hello World"} ) }
-                { message( {msg: "Goodbye World"} ) }
-                </div>
-            ); // CALL THE FUNCTION AND PASS IN THE STRING FOR THE PARAMETER
+                { React.createElement( message, { msg: "Hello World" }) }
+                { React.createElement( message, { msg: "Goodbye World" }) }
+            </div>
+            );
        
         ReactDOM.render(element, rootElement);
     </script>
